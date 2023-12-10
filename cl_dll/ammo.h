@@ -20,6 +20,7 @@
 
 #define WEAPON_FLAGS_SELECTONEMPTY 1
 
+//TODO (nabil) : Might be important later
 #define WEAPON_IS_ONTARGET 0x40
 
 struct WEAPON
