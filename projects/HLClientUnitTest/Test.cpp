@@ -11,7 +11,7 @@ BOOST_AUTO_TEST_CASE(myTestCase)
 
 
 BOOST_AUTO_TEST_CASE(otherTest) {
-    
+    //TODO : should make fixture
 	hello hello;
 
 	BOOST_CHECK_EQUAL(4, hello.doHello());
