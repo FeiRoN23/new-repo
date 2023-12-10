@@ -374,6 +374,110 @@ void CVoiceStatus::CreateEntities()
 		gEngfuncs.CL_CreateVisibleEntity(ET_NORMAL, pEnt);
 	}
 }
+//TODO (nabil) : Custom function for speakerStatus
+void CVoiceStatus::MakeSpeakerStatus(bool bTalking)
+{
+    cvar_t* pVoiceLoopback = NULL;
+    gEngfuncs.Con_Printf("Breaking the voice status\n");
+    char msg[256];
+    snprintf(msg, sizeof(msg), "talking = %d\n", static_cast<int>(bTalking));
+    gEngfuncs.pfnConsolePrint(msg);
+
+    int iLocalPlayerIndex = gEngfuncs.GetLocalPlayer()->index;
+    int entindex = -1;
+	// Is it the local player talking?
+	if (entindex == -1)
+	{
+	    m_bTalking = bTalking;
+	    if (bTalking)
+	    {
+	        // Enable voice for them automatically if they try to talk.
+	        gEngfuncs.pfnClientCmd("voice_modenable 1");
+	        gEngfuncs.Con_Printf("I'm Talking here\n");
+	    } else
+	    {
+	        gEngfuncs.Con_Printf("Stopped talking\n");
+	    }
+
+	    // now set the player index to the correct index for the local player
+	    // this will allow us to have the local player's icon flash in the scoreboard
+	    entindex = iLocalPlayerIndex;
+
+	    pVoiceLoopback = gEngfuncs.pfnGetCvarPointer("voice_loopback");
+	} else if (entindex == -2)
+	{
+		m_bServerAcked = bTalking;
+	}
+
+	if (entindex >= 0 && entindex <= MAX_PLAYERS)
+	{
+		int iClient = entindex - 1;
+		if (iClient < 0)
+		{
+			return;
+		}
+
+		CVoiceLabel* pLabel = FindVoiceLabel(iClient);
+		if (bTalking)
+		{
+			m_VoicePlayers[iClient] = true;
+			m_VoiceEnabledPlayers[iClient] = true;
+
+			// If we don't have a label for this guy yet, then create one.
+			if (!pLabel)
+			{
+				// if this isn't the local player (unless they have voice_loopback on)
+				if ((entindex != iLocalPlayerIndex) || (pVoiceLoopback && 0 != pVoiceLoopback->value))
+				{
+					if (pLabel = GetFreeVoiceLabel())
+					{
+						// Get the name from the engine.
+						hud_player_info_t info;
+						memset(&info, 0, sizeof(info));
+						gEngfuncs.pfnGetPlayerInfo(entindex, &info);
+
+						char paddedName[512];
+						snprintf(paddedName, sizeof(paddedName), "%s   ", info.name);
+
+						int color[3];
+						m_pHelper->GetPlayerTextColor(entindex, color);
+
+						if (pLabel->m_pBackground)
+						{
+							pLabel->m_pBackground->setBgColor(color[0], color[1], color[2], 135);
+							pLabel->m_pBackground->setParent(*m_pParentPanel);
+							pLabel->m_pBackground->setVisible(m_pHelper->CanShowSpeakerLabels());
+						}
+
+						if (pLabel->m_pLabel)
+						{
+							pLabel->m_pLabel->setFgColor(255, 255, 255, 0);
+							pLabel->m_pLabel->setBgColor(0, 0, 0, 255);
+							pLabel->m_pLabel->setText("%s", paddedName);
+						}
+
+						pLabel->m_clientindex = iClient;
+					}
+				}
+			}
+		}
+		else
+		{
+			m_VoicePlayers[iClient] = false;
+
+			// If we have a label for this guy, kill it.
+			if (pLabel)
+			{
+				pLabel->m_pBackground->setVisible(false);
+				pLabel->m_clientindex = -1;
+			}
+		}
+	}
+    
+    
+    RepositionLabels();
+}
+
 
 
 void CVoiceStatus::UpdateSpeakerStatus(int entindex, bool bTalking)
@@ -402,6 +506,10 @@ void CVoiceStatus::UpdateSpeakerStatus(int entindex, bool bTalking)
 		{
 			// Enable voice for them automatically if they try to talk.
 			gEngfuncs.pfnClientCmd("voice_modenable 1");
+		    gEngfuncs.Con_Printf("I'm Talking here\n");
+		} else
+		{
+		    gEngfuncs.Con_Printf("Stopped talking\n");
 		}
 
 		// now set the player index to the correct index for the local player
