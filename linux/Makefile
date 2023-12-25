@@ -5,7 +5,9 @@
 
 OS:=$(shell uname)
 HOSTNAME:=$(shell hostname)
-
+MOD_PATH=${HL_MOD_PATH}
+DLL_DIRECTORY=$(MOD_PATH)/dlls
+CL_DIRECTORY=$(MOD_PATH)/cl_dlls
 ifeq "$(CFG)" ""
 	CFG=release
 endif
@@ -89,3 +91,13 @@ hl: build_dir
 
 clean:
 	-rm -rf $(BUILD_OBJ_DIR)
+
+setup_mod:
+	-mkdir -p $(DLL_DIRECTORY);
+	-mkdir -p $(CL_DIRECTORY);
+
+copy_to_mod:
+	-cp $(BUILD_DIR)/hl.so $(DLL_DIRECTORY)
+	-cp $(BUILD_DIR)/client.so $(CL_DIRECTORY)
+
+build_mod: all clean setup_mod copy_to_mod
