@@ -1,0 +1,4 @@
+#!/bin/bash
+export LD_LIBRARY_PATH=$HOME/.local/share/Steam/ubuntu12_32/steam-runtime/pinned_libs_32:$HOME/.local/share/Steam/ubuntu12_32/steam-runtime/pinned_libs_64:/usr/lib/x86_64-linux-gnu/libfakeroot:/lib/i386-linux-gnu:/usr/local/lib:/lib/x86_64-linux-gnu:/lib32:/libx32:/lib:$HOME/.local/share/Steam/ubuntu12_32/steam-runtime/lib/i386-linux-gnu:$HOME/.local/share/Steam/ubuntu12_32/steam-runtime/usr/lib/i386-linux-gnu:$HOME/.local/share/Steam/ubuntu12_32/steam-runtime/lib/x86_64-linux-gnu:$HOME/.local/share/Steam/ubuntu12_32/steam-runtime/usr/lib/x86_64-linux-gnu:$HOME/.local/share/Steam/ubuntu12_32/steam-runtime/lib:$HOME/.local/share/Steam/ubuntu12_32/steam-runtime/usr/lib:$HOME/.local/share/Steam/steamapps/common/Half-Life
+cd ~/.steam/steam/steamapps/common/Half-Life
+gdb -q -ex=r --args hl_linux set args -dev -console -w 1280 -h 720 -game npc-talker
