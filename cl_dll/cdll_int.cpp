@@ -250,7 +250,7 @@ HUD_VoiceStatus
 Called when a player starts or stops talking.
 ==========================
 */
-
+//TODO (nabil) : voice indication in hud
 void DLLEXPORT HUD_VoiceStatus(int entindex, qboolean bTalking)
 {
 	////	RecClVoiceStatus(entindex, bTalking);
