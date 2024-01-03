@@ -166,7 +166,6 @@ cmd /c ""$(ProjectDir)..\..\filecopy.bat" "$(SolutionDir)../../network" "" "delt
     <PostBuildEvent />
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\cl_dll\hello.cpp" />
     <ClCompile Include="..\..\cl_dll\ammo.cpp" />
     <ClCompile Include="..\..\cl_dll\ammohistory.cpp" />
     <ClCompile Include="..\..\cl_dll\ammo_secondary.cpp" />
@@ -254,7 +253,6 @@ cmd /c ""$(ProjectDir)..\..\filecopy.bat" "$(SolutionDir)../../network" "" "delt
     <ClCompile Include="..\..\public\interface.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\cl_dll\hello.h" />
     <ClInclude Include="..\..\cl_dll\ammo.h" />
     <ClInclude Include="..\..\cl_dll\ammohistory.h" />
     <ClInclude Include="..\..\cl_dll\camera.h" />
