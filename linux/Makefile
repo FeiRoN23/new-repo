@@ -100,4 +100,4 @@ copy_to_mod:
 	-cp $(BUILD_DIR)/hl.so $(DLL_DIRECTORY)
 	-cp $(BUILD_DIR)/client.so $(CL_DIRECTORY)
 
-build_mod: all clean setup_mod copy_to_mod
+build_mod: clean all setup_mod copy_to_mod
