@@ -2713,8 +2713,8 @@
 	dmg(integer) : "Damage value" : 15
 ]
 
-@PointClass base(Targetname) = ammo_dispenser 
+@PointClass = ammo_dispenser 
 [
 	targetname(target_source) : "Name" : ""
-	mytime(string): "Frequency in seconds" 
+	mytime(integer) : "Frequency in seconds" : 15
 ]
