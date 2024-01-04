@@ -7,3 +7,6 @@
 # JETBRAIN Idea IDE
 .idea
 steam_appid.txt
+
+#ouputs make linux
+linux/output.txt
