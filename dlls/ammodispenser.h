@@ -1,15 +1,12 @@
 #include "extdll.h"
 #include "util.h"
 #include "cbase.h"
+#include "weapons.h"
 
 class CAmmoDispenser:public CBaseEntity
 {
 public:
     void Spawn() override;
-    void Give_ammo_player();
-    void Think() override;
-    bool KeyValue(KeyValueData* pkvd) override;
-    void SpawnAmmo();
-private:
-    float m_nextThinkTime;
+    void dispense_ammo();
+    void Use(CBaseEntity* pActivator, CBaseEntity* pCaller, USE_TYPE useType, float value) override;
 };
