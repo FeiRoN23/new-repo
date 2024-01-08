@@ -2713,7 +2713,7 @@
 	dmg(integer) : "Damage value" : 15
 ]
 
-@PointClass base(Targetname) = ammo_dispenser 
+@PointClass base(Targetname) size(-6 -6 -3, 6 6 3) = ammo_dispenser 
 [
 	targetname(target_source) : "Name" : ""
 ]
