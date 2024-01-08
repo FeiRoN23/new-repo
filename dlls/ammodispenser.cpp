@@ -18,7 +18,7 @@ void CAmmoDispenser::dispense_ammo() {
     if (FNullEnt(pent))
     {
         ALERT(at_console, "NULL Ent in Create!\n");
-        return NULL;
+        return;
     }
     CBaseEntity* ammoEntity = Instance(pent);
     
