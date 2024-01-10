@@ -1,42 +1,82 @@
 #include "ammodispenser.h"
 
-LINK_ENTITY_TO_CLASS(ammo_dispenser, CAmmoDispenser)
+const char* CButtonDispenser::ammoTypesNames[] =
+{
+    "ammo_9mmclip",
+    "ammo_9mmAR",
+    "ammo_buckshot",
+};
 
-void CAmmoDispenser::Spawn()
+void CObjectDispenser::Spawn()
 {
     pev->solid = SOLID_NOT;
     pev->movetype = MOVETYPE_NONE;
     ALERT(at_console, "Ammo dispenser spawned\n");
-    //UTIL_SetSize(pev, Vector(0, 0, 0), Vector(0, 0, 0));
+    
 }
 
-void CAmmoDispenser::dispense_ammo() {
-    ALERT(at_console, "dispensing 9mm ammo\n");
-    //Create("item_sodacan", pev->origin, pev->angles, edict());
+void CObjectDispenser::dispense_ammo(string_t ammoType) {
+    ALERT(at_console, "dispensing %s\n", STRING(ammoType));
     edict_t* pent;
-    pent = CREATE_NAMED_ENTITY(MAKE_STRING("ammo_9mmclip"));
+    pent = CREATE_NAMED_ENTITY(ammoType);
+    
     if (FNullEnt(pent))
     {
         ALERT(at_console, "NULL Ent in Create!\n");
         return;
     }
+    
     CBaseEntity* ammoEntity = Instance(pent);
     
-    ammoEntity->pev->origin = pev->origin;
+    ammoEntity->pev->origin = Vector(pev->origin.x, pev->origin.y, pev->origin.z - 2.5f);
     ammoEntity->pev->angles = pev->angles;
     ammoEntity->Spawn();
     ammoEntity->pev->movetype = MOVETYPE_NONE;
     ammoEntity->pev->solid = SOLID_TRIGGER;
-
-    //Old method to spawn
-    //Create("ammo_9mmclip", pev->origin, pev->angles, edict()); 
     
 }
 
-void CAmmoDispenser::Use(CBaseEntity* pActivator, CBaseEntity* pCaller, USE_TYPE useType, float value)
+LINK_ENTITY_TO_CLASS(ammo_dispenser, CObjectDispenser)
+
+void CButtonDispenser::Spawn()
 {
-    ALERT(at_console, "using dispenser targeting %s\n", STRING(pev->target));
-    dispense_ammo();
+    pev->movetype = MOVETYPE_PUSH;
+    pev->solid = SOLID_BSP;
+    SET_MODEL(ENT(pev), STRING(pev->model));
+    SetUse(&CButtonDispenser::Use);
 }
+
+
+void CButtonDispenser::Use(CBaseEntity* pActivator, CBaseEntity* pCaller, USE_TYPE useType, float value)
+{
+    if(pActivator->IsPlayer())
+    {
+        
+        CBaseEntity* dispBaseEnt = UTIL_FindEntityByTargetname(nullptr, STRING(pev->target));
+        
+        if (dispBaseEnt)
+        {
+            auto dispenserEnt =  dynamic_cast<CObjectDispenser*>(dispBaseEnt);
+            dispenserEnt->dispense_ammo(m_spawnAmmoName);
+        }
+        
+    }
+    
+}
+
+bool CButtonDispenser::KeyValue(KeyValueData* pkvd)
+{
+    if (FStrEq(pkvd->szKeyName, "ammoSpawn"))
+    {
+        int object = atoi(pkvd->szValue);
+        if (object >= 0 && object < ARRAYSIZE(ammoTypesNames))
+            m_spawnAmmoName = MAKE_STRING(ammoTypesNames[object]);
+        return true;
+    }
+}
+
+
+LINK_ENTITY_TO_CLASS(func_button_dispenser, CButtonDispenser);
+
 
 

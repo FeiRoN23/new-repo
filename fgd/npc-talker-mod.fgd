@@ -2717,3 +2717,15 @@
 [
 	targetname(target_source) : "Name" : ""
 ]
+@SolidClass base(Target,Targetname) = func_button_dispenser 
+[
+	targetname(target_source) : "Name" : ""
+	target(target_destination) : "Dispenser name" 
+	ammoSpawn(choices) : "Ammo to spawn" : 0 =
+	[
+		0: "9mm Clip"
+		1: "Machine Gun Clip"
+		2: "Shotgun Shells"
+	]
+
+]
