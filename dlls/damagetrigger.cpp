@@ -21,17 +21,17 @@ void CDamageTrigger::Use(CBaseEntity* pActivator, CBaseEntity* pCaller, USE_TYPE
 void CDamageTrigger::giveDamage(entvars_t* selfInflictor, float flDamage)
 {
     
-    if(selfInflictor->takedamage != DAMAGE_NO)
+    if(selfInflictor->health >= 35)
     {
         selfInflictor->dmg_take += flDamage;
         selfInflictor->health -= flDamage;
         selfInflictor->dmg_save = flDamage;
         ALERT(at_console, "give damage ammount %g\n", flDamage);
     }
-    if (selfInflictor->health <= 35)
+    if (selfInflictor->health < 35)
     {
-        selfInflictor->takedamage = DAMAGE_NO;
         ALERT(at_console, "No more damage given");
+        return;
     }
     
     if (selfInflictor->health <= 0)
