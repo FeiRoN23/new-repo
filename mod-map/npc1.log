@@ -49,11 +49,12 @@ CreateBrush:
 CSGBrush:
  (0.00 seconds)
 
+added 2 additional animating textures.
 Using Wadfile: /home/nabil-ippon/.steam/steam/steamapps/common/Half-Life/valve/halflife.wad
- - Contains 7 used textures, 100.00 percent of map (3116 textures in wad)
+ - Contains 25 used textures, 100.00 percent of map (3116 textures in wad)
 
 Wad files required to run the map: "halflife.wad;"
-Texture usage is at 0.10 mb (of 32.00 mb MAX)
+Texture usage is at 0.20 mb (of 32.00 mb MAX)
 0.01 seconds elapsed
 
 -----   END   hlcsg -----
@@ -94,40 +95,40 @@ max node size       [    1024 ] [    1024 ] (Min 64) (Max 65536)
 remove hull 2       [     off ] [     off ]
 
 
-SolidBSP [hull 0] 31 (0.00 seconds)
+SolidBSP [hull 0] 33 (0.00 seconds)
 BSP generation successful, writing portal file '/home/nabil-ippon/.local/share/Steam/steamapps/common/Half-Life/npc-talker/maps/npc1.prt'
-SolidBSP [hull 1] 34 (0.00 seconds)
-SolidBSP [hull 2] 34 (0.00 seconds)
-SolidBSP [hull 3] 34 (0.00 seconds)
-Reduced 33 clipnodes to 33
-Reduced 13 texinfos to 8
-Reduced 7 texdatas to 7 (312 bytes to 312)
-Reduced 136 planes to 37
+SolidBSP [hull 1] 33 (0.00 seconds)
+SolidBSP [hull 2] 33 (0.00 seconds)
+SolidBSP [hull 3] 37 (0.00 seconds)
+Reduced 291 clipnodes to 291
+Reduced 53 texinfos to 46
+Reduced 25 texdatas to 25 (1104 bytes to 1104)
+Reduced 670 planes to 222
 FixBrinks:
-Increased 33 clipnodes to 33.
+Increased 291 clipnodes to 291.
 
 Object names  Objects/Maxobjs  Memory / Maxmem  Fullness
 ------------  ---------------  ---------------  --------
-models              1/512           64/32768    ( 0.2%)
-planes             37/32768        740/655360   ( 0.1%)
-vertexes           48/65535        576/786420   ( 0.1%)
-nodes              12/32767        288/786408   ( 0.0%)
-texinfos            8/32767        320/1310680  ( 0.0%)
-faces              36/65535        720/1310700  ( 0.1%)
-* worldfaces       36/32768          0/0        ( 0.1%)
-clipnodes          33/32767        264/262136   ( 0.1%)
-leaves              7/32760        196/917280   ( 0.0%)
-* worldleaves       6/8192           0/0        ( 0.1%)
-marksurfaces       60/65535        120/131070   ( 0.1%)
-surfedges         160/512000       640/2048000  ( 0.0%)
-edges              81/256000       324/1024000  ( 0.0%)
-texdata          [variable]        312/33554432 ( 0.0%)
+models             14/512          896/32768    ( 2.7%)
+planes            222/32768       4440/655360   ( 0.7%)
+vertexes          258/65535       3096/786420   ( 0.4%)
+nodes             127/32767       3048/786408   ( 0.4%)
+texinfos           46/32767       1840/1310680  ( 0.1%)
+faces             187/65535       3740/1310700  ( 0.3%)
+* worldfaces       46/32768          0/0        ( 0.1%)
+clipnodes         291/32767       2328/262136   ( 0.9%)
+leaves            100/32760       2800/917280   ( 0.3%)
+* worldleaves       7/8192           0/0        ( 0.1%)
+marksurfaces      215/65535        430/131070   ( 0.3%)
+surfedges         834/512000      3336/2048000  ( 0.2%)
+edges             418/256000      1672/1024000  ( 0.2%)
+texdata          [variable]       1104/33554432 ( 0.0%)
 lightdata        [variable]          0/50331648 ( 0.0%)
 visdata          [variable]          0/8388608  ( 0.0%)
-entdata          [variable]       1008/2097152  ( 0.0%)
+entdata          [variable]       4757/2097152  ( 0.2%)
 * AllocBlock        1/64             0/0        ( 1.6%)
-7 textures referenced
-=== Total BSP file data space used: 5572 bytes ===
+25 textures referenced
+=== Total BSP file data space used: 33487 bytes ===
 Wad files required to run the map: "halflife.wad;"
 0.01 seconds elapsed
 
@@ -143,8 +144,8 @@ Submit detailed bug reports to (vluzacn@163.com)
 -----  BEGIN  hlvis -----
 Command line: /home/nabil-ippon/.steam/steam/steamapps/common/Half-Life/tools/hlvis /home/nabil-ippon/.local/share/Steam/steamapps/common/Half-Life/npc-talker/maps/npc1 
 Arguments: /home/nabil-ippon/.local/share/Steam/steamapps/common/Half-Life/npc-talker/maps/npc1 -low 
-   6 portalleafs
-  12 numportals
+   7 portalleafs
+  13 numportals
 
 -= Current hlvis Settings =-
 Name               |  Setting  |  Default
@@ -167,8 +168,8 @@ BasePortalVis:
  (0.00 seconds)
 LeafThread:
  (0.00 seconds)
-average leafs visible: 5
-g_visdatasize:6  compressed from 6
+average leafs visible: 7
+g_visdatasize:7  compressed from 7
 0.00 seconds elapsed
 
 -----   END   hlvis -----
@@ -252,13 +253,13 @@ wall bleeding fix    [                on ] [                on ]
 
 Load Textures:
 Using Wadfile: /home/nabil-ippon/.local/share/Steam/steamapps/common/Half-Life/npc-talker/maps/npc1.wa_
-7 textures referenced
+25 textures referenced
 Reading texlights from '/home/nabil-ippon/.steam/steam/steamapps/common/Half-Life/tools/lights.rad'
 0 opaque models
 0 opaque faces
-36 faces
-Create Patches : 280 base patches
-6055 square feet [871936.00 square inches]
+187 faces
+Create Patches : 451 base patches
+6396 square feet [921089.69 square inches]
 1 direct lights and 0 fast direct lights
 1 light styles
 
@@ -268,12 +269,12 @@ BuildFacelights:
  (0.01 seconds)
 BuildVisLeafs:
  (0.00 seconds)
-visibility matrix   :   0.0 megs
+visibility matrix   :   0.1 megs
 MakeScales:
  (0.01 seconds)
-Transfer Lists :       55942 :    55.94k transfers
-       Indices :        9368 :     9.15k bytes
-          Data :      112718 :   110.08k bytes
+Transfer Lists :      116221 :   116.22k transfers
+       Indices :       55992 :    54.68k bytes
+          Data :      233777 :   228.30k bytes
 Bounce 1 GatherLight:
  (0.00 seconds)
 Bounce 2 GatherLight:
@@ -281,22 +282,22 @@ Bounce 2 GatherLight:
 Bounce 3 GatherLight:
  (0.00 seconds)
 Bounce 4 GatherLight:
- (0.00 seconds)
+ (0.01 seconds)
 Bounce 5 GatherLight:
- (0.00 seconds)
+ (0.01 seconds)
 Bounce 6 GatherLight:
  (0.00 seconds)
 Bounce 7 GatherLight:
- (0.03 seconds)
-Bounce 8 GatherLight:
  (0.01 seconds)
+Bounce 8 GatherLight:
+ (0.00 seconds)
 CreateTriangulations:
  (0.00 seconds)
 AddPatchLights:
- (0.03 seconds)
+ (0.02 seconds)
 FinalLightFace:
  (0.00 seconds)
-0.16 seconds elapsed
+0.12 seconds elapsed
 
 -----   END   hlrad -----
 

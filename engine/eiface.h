@@ -248,6 +248,7 @@ typedef struct enginefuncs_s
 
 	void (*pfnAddServerCommand)(const char* cmd_name, void (*function)());
 
+    //TODO(nabil): useful pointer functions for voice
 	// For voice communications, set which clients hear eachother.
 	// NOTE: these functions take player entity indices (starting at 1).
 	qboolean (*pfnVoice_GetClientListening)(int iReceiver, int iSender);

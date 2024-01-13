@@ -254,11 +254,10 @@ Called when a player starts or stops talking.
 void DLLEXPORT HUD_VoiceStatus(int entindex, qboolean bTalking)
 {
 	////	RecClVoiceStatus(entindex, bTalking);
-
     
+    GetClientVoiceMgr()->UpdateSpeakerStatus(entindex, 0 != bTalking);
     //TODO (nabil) : replace original function by custom one
-    //GetClientVoiceMgr()->UpdateSpeakerStatus(entindex, 0 != bTalking);
-    GetClientVoiceMgr()->MakeSpeakerStatus(0 != bTalking);
+    //GetClientVoiceMgr()->MakeSpeakerStatus(0 != bTalking);
 }
 
 /*

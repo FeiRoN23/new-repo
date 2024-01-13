@@ -100,7 +100,8 @@ public:
 	// entindex is -2 to represent the local client's voice being acked by the server.
 	void	UpdateSpeakerStatus(int entindex, bool bTalking);
 
-    void    MakeSpeakerStatus(bool bTalking);
+    //TODO (nabil) : Custom function for speakerStatus
+    //void    MakeSpeakerStatus(bool bTalking);
 
 	// sets the correct image in the label for the player
 	void	UpdateSpeakerImage(vgui::Label *pLabel, int iPlayer);
