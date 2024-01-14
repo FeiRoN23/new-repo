@@ -27,6 +27,7 @@
 #include "r_efx.h"
 
 #include "cl_dll.h"
+#include "silencedglock.h"
 #include "../com_weapons.h"
 #include "../demo.h"
 
@@ -51,6 +52,7 @@ Vector previousorigin;
 
 // HLDM Weapon placeholder entities.
 CGlock g_Glock;
+CSilencedGlock g_SilencedGlock;
 CCrowbar g_Crowbar;
 CPython g_Python;
 CMP5 g_Mp5;
@@ -451,6 +453,7 @@ void HUD_InitClientWeapons()
 
 	// Allocate slot(s) for each weapon that we are going to be predicting
 	HUD_PrepEntity(&g_Glock, &player);
+    HUD_PrepEntity(&g_SilencedGlock, &player);
 	HUD_PrepEntity(&g_Crowbar, &player);
 	HUD_PrepEntity(&g_Python, &player);
 	HUD_PrepEntity(&g_Mp5, &player);
@@ -535,6 +538,10 @@ void HUD_WeaponsPostThink(local_state_s* from, local_state_s* to, usercmd_t* cmd
 		pWeapon = &g_Crowbar;
 		break;
 
+	case WEAPON_SILENCED_GLOCK:
+	    pWeapon = &g_SilencedGlock;
+	    break;
+	    
 	case WEAPON_GLOCK:
 		pWeapon = &g_Glock;
 		break;

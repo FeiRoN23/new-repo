@@ -59,6 +59,7 @@ HLDLL_OBJS = \
 	$(HLDLL_OBJ_DIR)/genericmonster.o \
 	$(HLDLL_OBJ_DIR)/ggrenade.o \
 	$(HLDLL_OBJ_DIR)/glock.o \
+	$(HLDLL_OBJ_DIR)/silencedglock.o \
 	$(HLDLL_OBJ_DIR)/gman.o \
 	$(HLDLL_OBJ_DIR)/h_ai.o \
 	$(HLDLL_OBJ_DIR)/h_battery.o \

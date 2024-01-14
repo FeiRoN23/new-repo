@@ -32,6 +32,8 @@ That was what we were going to do, but we ran out of time...oh well.
 */
 void Game_HookEvents()
 {
+    gEngfuncs.pfnHookEvent("events/silencedglock2.sc", EV_FireSilencedGlock2);
+    gEngfuncs.pfnHookEvent("events/silencedglock1.sc", EV_FireSilencedGlock1);
 	gEngfuncs.pfnHookEvent("events/glock1.sc", EV_FireGlock1);
 	gEngfuncs.pfnHookEvent("events/glock2.sc", EV_FireGlock2);
 	gEngfuncs.pfnHookEvent("events/shotgun1.sc", EV_FireShotGunSingle);

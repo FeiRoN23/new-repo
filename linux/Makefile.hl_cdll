@@ -90,6 +90,7 @@ DLL_OBJS = \
 	$(HL1_SERVER_OBJ_DIR)/egon.o \
 	$(HL1_SERVER_OBJ_DIR)/gauss.o \
 	$(HL1_SERVER_OBJ_DIR)/glock.o \
+	$(HL1_SERVER_OBJ_DIR)/silencedglock.o \
 	$(HL1_SERVER_OBJ_DIR)/handgrenade.o \
 	$(HL1_SERVER_OBJ_DIR)/hornetgun.o \
 	$(HL1_SERVER_OBJ_DIR)/mp5.o \
