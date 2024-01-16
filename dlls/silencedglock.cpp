@@ -47,6 +47,7 @@ bool CSilencedGlock::GetItemInfo(ItemInfo* p)
 bool CSilencedGlock::Deploy()
 {
 	// pev->body = 1;
+    m_holstered = false;
 	return DefaultDeploy("models/v_silencedglock.mdl", "models/p_silencedglock.mdl", GLOCK_DRAW, "onehanded");
 }
 void CSilencedGlock::SecondaryAttack()
@@ -173,3 +174,12 @@ void CSilencedGlock::WeaponIdle()
 		SendWeaponAnim(iAnim);
 	}
 }
+
+void CSilencedGlock::Holster()
+{
+    ALERT(at_console, "SIlenced glock holster func called \n");
+    m_holstered = true;
+    SendWeaponAnim(GLOCK_HOLSTER);
+}
+
+

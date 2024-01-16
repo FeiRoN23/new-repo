@@ -108,6 +108,7 @@ kbutton_t in_alt1;
 kbutton_t in_score;
 kbutton_t in_break;
 kbutton_t in_graph; // Display the netgraph
+kbutton_t in_holster;
 
 typedef struct kblist_s
 {
@@ -476,6 +477,8 @@ void IN_DuckDown()
 void IN_DuckUp() { KeyUp(&in_duck); }
 void IN_ReloadDown() { KeyDown(&in_reload); }
 void IN_ReloadUp() { KeyUp(&in_reload); }
+void IN_HolsterUp() { KeyUp(&in_holster); }
+void IN_HolsterDown(){ KeyDown(&in_holster); }
 void IN_Alt1Down() { KeyDown(&in_alt1); }
 void IN_Alt1Up() { KeyUp(&in_alt1); }
 void IN_GraphDown() { KeyDown(&in_graph); }
@@ -845,6 +848,11 @@ int CL_ButtonBits(bool bResetState)
 		bits |= IN_RELOAD;
 	}
 
+    if ((in_holster.state & 3) != 0)
+    {
+        bits |= IN_HOLSTER;
+    }
+
 	if ((in_alt1.state & 3) != 0)
 	{
 		bits |= IN_ALT1;
@@ -877,6 +885,7 @@ int CL_ButtonBits(bool bResetState)
 		in_reload.state &= ~2;
 		in_alt1.state &= ~2;
 		in_score.state &= ~2;
+	    in_holster.state &= ~2;
 	}
 
 	return bits;
@@ -968,6 +977,8 @@ void InitInput()
 	gEngfuncs.pfnAddCommand("-graph", IN_GraphUp);
 	gEngfuncs.pfnAddCommand("+break", IN_BreakDown);
 	gEngfuncs.pfnAddCommand("-break", IN_BreakUp);
+    gEngfuncs.pfnAddCommand("+holster", IN_HolsterDown);
+    gEngfuncs.pfnAddCommand("-holster", IN_HolsterUp);
 
 	lookstrafe = gEngfuncs.pfnRegisterVariable("lookstrafe", "0", FCVAR_ARCHIVE);
 	lookspring = gEngfuncs.pfnRegisterVariable("lookspring", "0", FCVAR_ARCHIVE);

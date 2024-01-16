@@ -19,6 +19,7 @@ public:
     bool Deploy() override;
     void Reload() override;
     void WeaponIdle() override;
+    void Holster() override;
 
     bool UseDecrement() override
     {
@@ -34,6 +35,5 @@ private:
     
     unsigned short m_usFireGlock1;
     unsigned short m_usFireGlock2;
-    
     
 };

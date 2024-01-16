@@ -3102,6 +3102,7 @@ void CBasePlayer::SelectItem(const char* pstr)
 		m_pActiveItem->m_ForceSendAnimations = true;
 		m_pActiveItem->Deploy();
 		m_pActiveItem->m_ForceSendAnimations = false;
+	    m_pActiveItem->GetWeaponPtr()->m_holstered = false;
 		m_pActiveItem->UpdateItemInfo();
 	}
 }

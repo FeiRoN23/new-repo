@@ -138,6 +138,23 @@ void CBasePlayerWeapon::ItemPostFrame()
 		m_flLastFireTime = 0.0f;
 	}
 
+    if((m_pPlayer->m_afButtonPressed & IN_HOLSTER) != 0 && !m_fInReload) 
+    {
+        ALERT(at_console, "Holster key pressed\n");
+        if(m_holstered)
+        {
+            m_holstered = false;
+            Deploy();
+        }
+        else
+            Holster();
+        return;
+    }
+    
+    if(m_pPlayer->pev->button & (IN_ATTACK2 | IN_ATTACK) && m_holstered) {
+        return;
+    }
+
 	if ((m_pPlayer->pev->button & IN_ATTACK2) != 0 && CanAttack(m_flNextSecondaryAttack, gpGlobals->time, UseDecrement()))
 	{
 		if (pszAmmo2() && 0 == m_pPlayer->m_rgAmmo[SecondaryAmmoIndex()])
@@ -164,7 +181,7 @@ void CBasePlayerWeapon::ItemPostFrame()
 		// reload when reload is pressed, or if no buttons are down and weapon is empty.
 		Reload();
 	}
-	else if ((m_pPlayer->pev->button & (IN_ATTACK | IN_ATTACK2)) == 0)
+	else if ((m_pPlayer->pev->button & (IN_ATTACK | IN_ATTACK2)) == 0 && !m_holstered)
 	{
 		// no fire buttons down
 
@@ -190,13 +207,12 @@ void CBasePlayerWeapon::ItemPostFrame()
 				return;
 			}
 		}
-
 		WeaponIdle();
 		return;
 	}
 
 	// catch all
-	if (ShouldWeaponIdle())
+	if (ShouldWeaponIdle() && !m_holstered)
 	{
 		WeaponIdle();
 	}

@@ -865,6 +865,7 @@ void CBasePlayerWeapon::Holster()
 	m_fInReload = false; // cancel any reload in progress.
 	m_pPlayer->pev->viewmodel = 0;
 	m_pPlayer->pev->weaponmodel = 0;
+    m_holstered = true;
 }
 
 void CBasePlayerAmmo::Spawn()
